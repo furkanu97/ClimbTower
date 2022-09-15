@@ -3,6 +3,7 @@ using UnityEngine;
 public class Control : MonoBehaviour
 {
     [HideInInspector] public bool rotate;
+    [HideInInspector] public int hammerCounter;
     [SerializeField] public GameObject step;
     [SerializeField] public Transform pickAxe;
     [SerializeField] public int forceFactor;
@@ -13,6 +14,7 @@ public class Control : MonoBehaviour
     private float _pullRate;
     void Start()
     {
+        hammerCounter = 0;
         _onAir = false;
         rotate = false;
         _mRigidBody = GetComponent<Rigidbody>();
@@ -28,7 +30,7 @@ public class Control : MonoBehaviour
 
     private void CarryPickaxe()
     {
-        pickAxe.position = transform.position + new Vector3(0.2f, 0, -0.2f);
+        pickAxe.position = transform.position + new Vector3(0.2f, 0, -0.3f);
     }
     
     private void GetInput()
@@ -77,7 +79,7 @@ public class Control : MonoBehaviour
     public void PutStep()
     {
         _mRigidBody.velocity = Vector3.zero;
-        step.transform.position = pickAxe.position - new Vector3(0.2f,0.5f,-0.2f);
+        step.transform.position = pickAxe.position - new Vector3(0.2f,0.7f,-0.2f);
         step.SetActive(true);
     }
     
