@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Control : MonoBehaviour
@@ -21,7 +18,6 @@ public class Control : MonoBehaviour
         _y = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         pickAxe.position = transform.position + new Vector3(0.2f, 0, -0.2f);
