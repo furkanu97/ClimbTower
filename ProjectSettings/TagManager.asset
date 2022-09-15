@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Breakable
   - Step
+  - Concrete
+  - Holdable
   layers:
   - Default
   - TransparentFX
