@@ -225,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609597837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 0, z: -0.2}
+  m_LocalPosition: {x: -0.8, y: 0, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -547,6 +547,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8180084988633998354, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180084988633998354, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
 --- !u!4 &890562238 stripped
@@ -765,6 +773,14 @@ PrefabInstance:
     - target: {fileID: 3003082645066565232, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180084988633998354, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180084988633998354, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
@@ -1250,6 +1266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ctrl: {fileID: 8019989321358220656}
+  hammerMaterial: {fileID: 2100000, guid: 6bbcfee9803746c47b70222231ab7727, type: 2}
+  pickaxeMaterial: {fileID: 2100000, guid: 822ada497e58d9646b34ba149cd93498, type: 2}
 --- !u!54 &1062628640
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1774,7 +1792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8180084988633998354, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
       propertyPath: m_CollisionDetection
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b442f8d67a080db45baaea8dd3fd1b83, type: 3}
@@ -2364,9 +2382,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotate: 0
+  hammerCounter: 0
   step: {fileID: 1092853521}
   pickAxe: {fileID: 609597838}
-  forceFactor: 5
+  forceFactor: 4
   rotateSpeed: 5
 --- !u!1001 &9089036490244190613
 PrefabInstance:
