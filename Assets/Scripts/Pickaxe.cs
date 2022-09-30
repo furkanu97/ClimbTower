@@ -1,7 +1,6 @@
 using System;
 using UnityEditor.Rendering;
 using UnityEngine;
-using Random = System.Random;
 
 public class Pickaxe : MonoBehaviour
 {
@@ -17,6 +16,7 @@ public class Pickaxe : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Rotate: " + rotate);
         RotateAxe();
     }
 
