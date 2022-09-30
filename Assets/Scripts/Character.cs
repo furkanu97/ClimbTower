@@ -3,6 +3,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] public Pickaxe pickaxe;
+    [SerializeField] public ICollectable collectable;
     public bool onAir;
     
     void Start()

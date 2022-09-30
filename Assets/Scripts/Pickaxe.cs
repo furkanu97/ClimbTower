@@ -16,7 +16,6 @@ public class Pickaxe : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Rotate: " + rotate);
         RotateAxe();
     }
 
@@ -34,6 +33,11 @@ public class Pickaxe : MonoBehaviour
         {
             rotate = false;
             transform.eulerAngles = new Vector3(0, 0, 0);
+            ICollectable collectable = collision.gameObject.GetComponent<ICollectable>();
+            if (collectable != null)
+            {
+                Debug.Log("Name: " + collectable.Name);
+            }
         }
         else if (collision.gameObject.CompareTag("Holdable"))
         {

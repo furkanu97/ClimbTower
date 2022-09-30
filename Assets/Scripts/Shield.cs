@@ -2,8 +2,16 @@
 
 public class Shield : MonoBehaviour, ICollectable
 {
-    public void Use()
+    public string Name { get { return Name; } set { Name = "Shield"; }
+    }
+    
+    public void ActivateShield()
     {
         
+    }
+    
+    public void Use()
+    {
+        ActivateShield();
     }
 }

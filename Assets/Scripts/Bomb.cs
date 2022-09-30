@@ -2,8 +2,21 @@
 
 public class Bomb : MonoBehaviour, ICollectable
 {
-    public void Use()
+    private string name;
+    public string Name { get { return name; } set { name = value; } }
+    
+    public void Start()
+    {
+        name = "Hammer";
+    }
+    
+    public void PlantBomb()
     {
         
+    }
+    
+    public void Use()
+    {
+        PlantBomb();
     }
 }
