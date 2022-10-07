@@ -5,13 +5,18 @@ using UnityEngine;
 public class UseCollectable : MonoBehaviour
 {
     [SerializeField] public Character character;
-    [SerializeField] public Hammer hammer;
     [SerializeField] public CollectableList collectable;
-    public void Start()
+    private Sprite _sprite;
+    private void Start()
     {
         collectable = CollectableList.Empty;
+        _sprite = GetComponentInChild<SpriteRenderer>().sprite;
     }
 
+    private void Update()
+    {
+        ChangeIcon();
+    }
     public void UseOnClick()
     {
         if (character.GetComponent<Hammer>())
@@ -34,5 +39,11 @@ public class UseCollectable : MonoBehaviour
         {
             character.GetComponent<Shield>().Use();
         }
+    }
+
+    private void ChangeIcon()
+    {
+        if(collectable != CollectableList.Empty){}
+        //GetChild(0).GetComponent<Image>().sprite = Resources.Load <Sprite>(collectable.ToString());
     }
 }
