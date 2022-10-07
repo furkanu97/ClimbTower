@@ -33,11 +33,8 @@ public class Pickaxe : MonoBehaviour
         {
             rotate = false;
             transform.eulerAngles = new Vector3(0, 0, 0);
-            ICollectable collectable = collision.gameObject.GetComponent<ICollectable>();
-            if (collectable != null)
-            {
-                Debug.Log("Name: " + collectable.Name);
-            }
+			DestroyCollectable(character);
+			AddCollectable(character, collision.collider.gameObject.name);
         }
         else if (collision.gameObject.CompareTag("Holdable"))
         {
@@ -46,6 +43,54 @@ public class Pickaxe : MonoBehaviour
         }
     }
     
+	private void AddCollectable(Character c, string name)
+	{
+		if(name == "CollectHammer")
+		{
+			c.gameObject.AddComponent<Hammer>();
+		}
+		else if(name == "CollectNest")
+		{
+			c.gameObject.AddComponent<Nest>();
+		}
+		else if(name == "CollectBomb")
+		{
+			c.gameObject.AddComponent<Bomb>();
+		}
+		else if(name == "CollectThrowSnow")
+		{
+			c.gameObject.AddComponent<ThrowSnow>();
+		}
+		else if(name == "CollectShield")
+		{
+			c.gameObject.AddComponent<Shield>();
+		}
+	}
+
+	private void DestroyCollectable(Character c)
+	{
+		if(c.GetComponent<Hammer>())
+		{
+			Destroy(c.GetComponent<Hammer>());
+		}
+		if(c.GetComponent<Nest>())
+		{
+			Destroy(c.GetComponent<Nest>());
+		}
+		if(c.GetComponent<Bomb>())
+		{
+			Destroy(c.GetComponent<Bomb>());
+		}
+		if(c.GetComponent<ThrowSnow>())
+		{
+			Destroy(c.GetComponent<ThrowSnow>());
+		}
+		if(c.GetComponent<Shield>())
+		{
+			Destroy(c.GetComponent<Shield>());
+		}
+		
+	}
     
     private void PutStep()
     {
