@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pickaxe : MonoBehaviour
 {
     [SerializeField] public Character character;
+	[SerializeField] public UseCollectable button;
     [SerializeField] public GameObject step;
     [HideInInspector] public bool rotate;
     [SerializeField] public int rotateSpeed;
@@ -33,8 +34,11 @@ public class Pickaxe : MonoBehaviour
         {
             rotate = false;
             transform.eulerAngles = new Vector3(0, 0, 0);
-			DestroyCollectable(character);
-			AddCollectable(character, collision.collider.gameObject.name);
+			if(collision.collider.gameObject.name != CollectableList.Empty.ToString())
+			{
+				DestroyCollectable();
+				AddCollectable(collision.collider.gameObject.name);
+			}
         }
         else if (collision.gameObject.CompareTag("Holdable"))
         {
@@ -43,51 +47,61 @@ public class Pickaxe : MonoBehaviour
         }
     }
     
-	private void AddCollectable(Character c, string name)
+	private void AddCollectable(string name)
 	{
-		if(name == "CollectHammer")
+		if(name == "Hammer")
 		{
-			c.gameObject.AddComponent<Hammer>();
+			character.gameObject.AddComponent<Hammer>();
+			character.collectable = CollectableList.Hammer;
+			button.collectable = CollectableList.Hammer;
 		}
-		else if(name == "CollectNest")
+		else if(name == "Nest")
 		{
-			c.gameObject.AddComponent<Nest>();
+			character.gameObject.AddComponent<Nest>();
+			character.collectable = CollectableList.Nest;
+			button.collectable = CollectableList.Nest;
 		}
-		else if(name == "CollectBomb")
+		else if(name == "Bomb")
 		{
-			c.gameObject.AddComponent<Bomb>();
+			character.gameObject.AddComponent<Bomb>();
+			character.collectable = CollectableList.Bomb;
+			button.collectable = CollectableList.Bomb;
 		}
-		else if(name == "CollectThrowSnow")
+		else if(name == "ThrowSnow")
 		{
-			c.gameObject.AddComponent<ThrowSnow>();
+			character.gameObject.AddComponent<ThrowSnow>();
+			character.collectable = CollectableList.ThrowSnow;
+			button.collectable = CollectableList.ThrowSnow;
 		}
-		else if(name == "CollectShield")
+		else if(name == "Shield")
 		{
-			c.gameObject.AddComponent<Shield>();
+			character.gameObject.AddComponent<Shield>();
+			character.collectable = CollectableList.Shield;
+			button.collectable = CollectableList.Shield;
 		}
 	}
 
-	private void DestroyCollectable(Character c)
+	private void DestroyCollectable()
 	{
-		if(c.GetComponent<Hammer>())
+		if(character.GetComponent<Hammer>())
 		{
-			Destroy(c.GetComponent<Hammer>());
+			Destroy(character.GetComponent<Hammer>());
 		}
-		if(c.GetComponent<Nest>())
+		if(character.GetComponent<Nest>())
 		{
-			Destroy(c.GetComponent<Nest>());
+			Destroy(character.GetComponent<Nest>());
 		}
-		if(c.GetComponent<Bomb>())
+		if(character.GetComponent<Bomb>())
 		{
-			Destroy(c.GetComponent<Bomb>());
+			Destroy(character.GetComponent<Bomb>());
 		}
-		if(c.GetComponent<ThrowSnow>())
+		if(character.GetComponent<ThrowSnow>())
 		{
-			Destroy(c.GetComponent<ThrowSnow>());
+			Destroy(character.GetComponent<ThrowSnow>());
 		}
-		if(c.GetComponent<Shield>())
+		if(character.GetComponent<Shield>())
 		{
-			Destroy(c.GetComponent<Shield>());
+			Destroy(character.GetComponent<Shield>());
 		}
 		
 	}

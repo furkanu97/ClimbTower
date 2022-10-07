@@ -5,18 +5,17 @@ using UnityEngine;
 public enum CollectableList
 {
     Empty,
-    CollectHammer,
-    CollectNest,
-    CollectShield,
-    CollectThrowSnow,
-    CollectBomb
+    Hammer,
+    Nest,
+    Shield,
+    ThrowSnow,
+    Bomb
 };
 public class SetCollectable : MonoBehaviour
 {
     [SerializeField] public CollectableList list;
     void Start()
     {
-        Debug.Log("Collectable selected: " + list);
         gameObject.name = list.ToString();
     }
 }

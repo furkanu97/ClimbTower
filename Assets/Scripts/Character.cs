@@ -3,12 +3,13 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] public Pickaxe pickaxe;
-    [SerializeField] public ICollectable collectable;
+    [SerializeField] public CollectableList collectable;
     public bool onAir;
     
     void Start()
     {
         onAir = false;
+        collectable = CollectableList.Empty;
     }
 
     void Update()
