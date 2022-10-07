@@ -1985,7 +1985,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 819355587}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2053,6 +2053,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 8019989321358220656}
   collectable: 0
+  sprites:
+  - {fileID: 21300000, guid: 91601e6753b3588409291deea0773d69, type: 3}
+  - {fileID: 21300000, guid: 64ec3f5b00b90d14c80c97c58a0ab971, type: 3}
+  - {fileID: 21300000, guid: 7c8be05d978ebf34ab7b1bc39d7e2d8a, type: 3}
+  - {fileID: 21300000, guid: 929f5f0ff54d2df409611a9b1ce1bac5, type: 3}
+  - {fileID: 21300000, guid: 6c89f66070eaa5f469c0300f7e0b89af, type: 3}
 --- !u!1 &843432838
 GameObject:
   m_ObjectHideFlags: 0

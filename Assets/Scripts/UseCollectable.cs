@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using UnityEngine;
 
 public class UseCollectable : MonoBehaviour
 {
     [SerializeField] public Character character;
-    [SerializeField] public CollectableList collectable;
-    private Sprite _sprite;
+    [SerializeField] public List<Sprite> sprites;
+    private SpriteRenderer m_SpriteRenderer;
     private void Start()
     {
-        collectable = CollectableList.Empty;
-        _sprite = GetComponentInChild<SpriteRenderer>().sprite;
-    }
-
-    private void Update()
-    {
-        ChangeIcon();
+        m_SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     public void UseOnClick()
     {
@@ -41,9 +36,19 @@ public class UseCollectable : MonoBehaviour
         }
     }
 
-    private void ChangeIcon()
+    public void ChangeIcon(CollectableList collectable)
     {
-        if(collectable != CollectableList.Empty){}
-        //GetChild(0).GetComponent<Image>().sprite = Resources.Load <Sprite>(collectable.ToString());
+        if (collectable != CollectableList.Empty)
+        {
+            foreach (var sp in sprites)
+            {
+                Debug.Log("Name: " + sp.name);
+                Debug.Log("Cl Name: " + collectable.ToString());
+                if (sp.name == collectable.ToString())
+                {
+                    m_SpriteRenderer.sprite = sp;
+                }
+            }
+        }
     }
 }
