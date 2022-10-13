@@ -7,10 +7,11 @@ public class UseCollectable : MonoBehaviour
 {
     [SerializeField] public Character character;
     [SerializeField] public List<Sprite> sprites;
-    private SpriteRenderer m_SpriteRenderer;
+    private Sprite _sprite;
+    private SpriteRenderer _mSpriteRenderer;
     private void Start()
     {
-        m_SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _mSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     public void UseOnClick()
     {
@@ -40,15 +41,9 @@ public class UseCollectable : MonoBehaviour
     {
         if (collectable != CollectableList.Empty)
         {
-            foreach (var sp in sprites)
-            {
-                Debug.Log("Name: " + sp.name);
-                Debug.Log("Cl Name: " + collectable.ToString());
-                if (sp.name == collectable.ToString())
-                {
-                    m_SpriteRenderer.sprite = sp;
-                }
-            }
+            _sprite = sprites.Find(sp => sp.name == collectable.ToString());
+            Debug.Log("Name: " + _sprite.name);
+            _mSpriteRenderer.sprite = _sprite;
         }
     }
 }
