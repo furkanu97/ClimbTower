@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class Shield : MonoBehaviour, ICollectable
+public class Shield : CollectableBase
 {
     public void ActivateShield()
     {
         
     }
     
-    public void Use()
+    public override void Use()
     {
         ActivateShield();
     }

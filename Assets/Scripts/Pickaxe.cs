@@ -1,16 +1,22 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pickaxe : MonoBehaviour
 {
     [SerializeField] public Character character;
 	[SerializeField] public UseCollectable button;
     [SerializeField] public GameObject step;
+    [SerializeField] public Material hammerMaterial;
+    [SerializeField] public Material pickaxeMaterial; 
     [HideInInspector] public bool rotate;
+    [HideInInspector] public bool hammerMode;
     [SerializeField] public int rotateSpeed;
 
     private void Start()
     {
         rotate = false;
+        hammerMode = false;
     }
 
     private void Update()
@@ -28,80 +34,49 @@ public class Pickaxe : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Concrete"))
-        {
-            rotate = false;
-            transform.eulerAngles = new Vector3(0, 0, 0);
-			if(collision.collider.gameObject.name != CollectableList.Empty.ToString())
-			{
-				DestroyCollectable();
-				AddCollectable(collision.collider.gameObject.name);
-			}
-        }
-        else if (collision.gameObject.CompareTag("Holdable"))
-        {
-            rotate = false;
-            PutStep();
-        }
+	    rotate = false;
+	    if (hammerMode)
+	    {
+		    TransformPickaxe();
+		    Swing(collision.collider.gameObject);
+	    }
+	    if (collision.gameObject.CompareTag("Concrete"))
+	    {
+		    transform.eulerAngles = new Vector3(0, 0, 0);
+		    if (collision.gameObject.name != "Concrete")
+		    {
+			    DestroyCollectable();
+			    button.GetComponent<Button>().interactable = true;
+			    AddCollectable(collision.collider.gameObject.name);
+		    }
+	    }
+	    else if (collision.gameObject.CompareTag("Holdable") && !hammerMode)
+	    {
+		    PutStep();
+	    }
     }
     
-	private void AddCollectable(string name)
+	private void AddCollectable(string collectableName)
 	{
-		if(name == CollectableList.Hammer.ToString())
+		character.collectable = collectableName switch
 		{
-			character.gameObject.AddComponent<Hammer>();
-			character.collectable = CollectableList.Hammer;
-			button.ChangeIcon(CollectableList.Hammer);
-		}
-		else if(name == CollectableList.Nest.ToString())
-		{
-			character.gameObject.AddComponent<Nest>();
-			character.collectable = CollectableList.Nest;
-			button.ChangeIcon(CollectableList.Nest);
-		}
-		else if(name == CollectableList.Bomb.ToString())
-		{
-			character.gameObject.AddComponent<Bomb>();
-			character.collectable = CollectableList.Bomb;
-			button.ChangeIcon(CollectableList.Bomb);
-		}
-		else if(name == CollectableList.ThrowSnow.ToString())
-		{
-			character.gameObject.AddComponent<ThrowSnow>();
-			character.collectable = CollectableList.ThrowSnow;
-			button.ChangeIcon(CollectableList.ThrowSnow);
-		}
-		else if(name == CollectableList.Shield.ToString())
-		{
-			character.gameObject.AddComponent<Shield>();
-			character.collectable = CollectableList.Shield;
-			button.ChangeIcon(CollectableList.Shield);
-		}
+			"Hammer" => FindObjectOfType<Hammer>(),
+			"Nest" => FindObjectOfType<Nest>(),
+			"Bomb" => FindObjectOfType<Bomb>(),
+			"ThrowSnow" => FindObjectOfType<ThrowSnow>(),
+			"Shield" => FindObjectOfType<Shield>(),
+			_ => character.collectable
+		};
+		button.ChangeIcon(collectableName);
 	}
 
 	private void DestroyCollectable()
 	{
-		if(character.GetComponent<Hammer>())
+		if(character.GetComponent<CollectableBase>())
 		{
-			Destroy(character.GetComponent<Hammer>());
+			Destroy(character.GetComponent<CollectableBase>());
+			button.GetComponent<Button>().interactable = false;
 		}
-		if(character.GetComponent<Nest>())
-		{
-			Destroy(character.GetComponent<Nest>());
-		}
-		if(character.GetComponent<Bomb>())
-		{
-			Destroy(character.GetComponent<Bomb>());
-		}
-		if(character.GetComponent<ThrowSnow>())
-		{
-			Destroy(character.GetComponent<ThrowSnow>());
-		}
-		if(character.GetComponent<Shield>())
-		{
-			Destroy(character.GetComponent<Shield>());
-		}
-		
 	}
     
     private void PutStep()
@@ -110,54 +85,17 @@ public class Pickaxe : MonoBehaviour
         step.transform.position = transform.position - new Vector3(0.2f,0.7f,-0.2f);
         step.SetActive(true);
     }
+
+    private void TransformPickaxe()
+    {
+	    hammerMode = false;
+	    transform.Find("Top").localScale = new Vector3(0.3f, 0.07f, 0.05f);
+        GetComponentInChildren<MeshRenderer>().material = pickaxeMaterial;
+    }
     
-    
-    
-    // [SerializeField] public Material hammerMaterial;
-    // [SerializeField] public Material pickaxeMaterial; 
-    // private bool _hammerMode;
-    //
-    // private void TransformHammer()
-    // {
-    //     ctrl.rotate = false;
-    //     ctrl.ResetRotation();
-    //     _hammerMode = true;
-    //     transform.localScale = new Vector3(0.25f, 0.25f, 0.2f);
-    //     gameObject.GetComponent<MeshRenderer>().material = hammerMaterial;
-    // }
-    //
-    // private void TransformPickaxe()
-    // {
-    //     ctrl.rotate = false;
-    //     ctrl.ResetRotation();
-    //     _hammerMode = false;
-    //     transform.localScale = new Vector3(0.3f, 0.07f, 0.05f);
-    //     gameObject.GetComponent<MeshRenderer>().material = pickaxeMaterial;
-    // }
-    //
-    //
-    //
-    // private void OnCollisionExit(Collision other)
-    // {
-    //     if (other.gameObject.CompareTag("Concrete"))
-    //     {
-    //         Debug.Log("Reset!");
-    //         ctrl.hammerCounter = 0;
-    //     }
-    //     else if (other.gameObject.CompareTag("Holdable"))
-    //     {
-    //         ctrl.hammerCounter++;
-    //         if (ctrl.hammerCounter == 3)
-    //         {
-    //             TransformHammer();
-    //         }
-    //         Debug.Log("Counter: " + ctrl.hammerCounter);
-    //     }
-    // }
-    //
-    // private void Swing(GameObject go)
-    // {
-    //     go.transform.position += Vector3.right*1.1f;
-    //     go.GetComponent<Rigidbody>().useGravity = true;
-    // }
+    private void Swing(GameObject go)
+    {
+        go.transform.position += Vector3.right*1.1f;
+        go.GetComponent<Rigidbody>().useGravity = true;
+    }
 }

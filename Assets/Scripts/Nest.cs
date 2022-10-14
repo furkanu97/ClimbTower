@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class Nest : MonoBehaviour, ICollectable
+public class Nest : CollectableBase
 {
     public void ReleaseBirds()
     {
         
     }
     
-    public void Use()
+    public override void Use()
     {
         ReleaseBirds();
     }

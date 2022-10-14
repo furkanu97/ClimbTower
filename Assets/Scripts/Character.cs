@@ -3,13 +3,14 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] public Pickaxe pickaxe;
-    [SerializeField] public CollectableList collectable;
+    [SerializeField] public CollectableBase collectable;
     public bool onAir;
+    private Rigidbody _rigidbody;
     
     void Start()
     {
         onAir = false;
-        collectable = CollectableList.Empty;
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -25,7 +26,7 @@ public class Character : MonoBehaviour
     public void Jump(Vector3 force)
     {
         pickaxe.transform.eulerAngles = new Vector3(0, 0, 0);
-        GetComponent<Rigidbody>().AddForce(force);
+        _rigidbody.AddForce(force);
         onAir = true;
     }
 

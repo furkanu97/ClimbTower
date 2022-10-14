@@ -1,13 +1,23 @@
+using System;
 using UnityEngine;
 
-public class Hammer : MonoBehaviour, ICollectable
+public class Hammer : CollectableBase
 {
-    public void TransformHammer()
+    [SerializeField] public GameObject pickAxe;
+
+    private void Start()
     {
-        Debug.Log("Hammer!!");
+        pickAxe = GameObject.Find("Pickaxe");
+    }
+
+    private void TransformHammer()
+    {
+        pickAxe.GetComponent<Pickaxe>().hammerMode = true;
+        pickAxe.transform.Find("Top").localScale = new Vector3(0.25f, 0.25f, 0.2f);
+        pickAxe.GetComponentInChildren<MeshRenderer>().material = pickAxe.GetComponent<Pickaxe>().hammerMaterial;
     }
     
-    public void Use()
+    public override void Use()
     {
         TransformHammer();
     }

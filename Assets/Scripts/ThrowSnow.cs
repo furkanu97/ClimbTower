@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class ThrowSnow : MonoBehaviour, ICollectable
+public class ThrowSnow : CollectableBase
 {
     public void ThrowSnowBall()
     {
         
     }
     
-    public void Use()
+    public override void Use()
     {
         ThrowSnowBall();
     }

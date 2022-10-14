@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class Bomb : MonoBehaviour, ICollectable
+public class Bomb : CollectableBase
 {    
     public void PlantBomb()
     {
         
     }
     
-    public void Use()
+    public override void Use()
     {
         PlantBomb();
     }
