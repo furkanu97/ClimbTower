@@ -1,5 +1,3 @@
-using System;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Pickaxe : MonoBehaviour
@@ -49,35 +47,35 @@ public class Pickaxe : MonoBehaviour
     
 	private void AddCollectable(string name)
 	{
-		if(name == "Hammer")
+		if(name == CollectableList.Hammer.ToString())
 		{
 			character.gameObject.AddComponent<Hammer>();
 			character.collectable = CollectableList.Hammer;
-			button.collectable = CollectableList.Hammer;
+			button.ChangeIcon(CollectableList.Hammer);
 		}
-		else if(name == "Nest")
+		else if(name == CollectableList.Nest.ToString())
 		{
 			character.gameObject.AddComponent<Nest>();
 			character.collectable = CollectableList.Nest;
-			button.collectable = CollectableList.Nest;
+			button.ChangeIcon(CollectableList.Nest);
 		}
-		else if(name == "Bomb")
+		else if(name == CollectableList.Bomb.ToString())
 		{
 			character.gameObject.AddComponent<Bomb>();
 			character.collectable = CollectableList.Bomb;
-			button.collectable = CollectableList.Bomb;
+			button.ChangeIcon(CollectableList.Bomb);
 		}
-		else if(name == "ThrowSnow")
+		else if(name == CollectableList.ThrowSnow.ToString())
 		{
 			character.gameObject.AddComponent<ThrowSnow>();
 			character.collectable = CollectableList.ThrowSnow;
-			button.collectable = CollectableList.ThrowSnow;
+			button.ChangeIcon(CollectableList.ThrowSnow);
 		}
-		else if(name == "Shield")
+		else if(name == CollectableList.Shield.ToString())
 		{
 			character.gameObject.AddComponent<Shield>();
 			character.collectable = CollectableList.Shield;
-			button.collectable = CollectableList.Shield;
+			button.ChangeIcon(CollectableList.Shield);
 		}
 	}
 
