@@ -5,6 +5,7 @@ public class Character : MonoBehaviour
     [SerializeField] public Pickaxe pickaxe;
     [SerializeField] public CollectableBase collectable;
     public bool onAir;
+    public bool shieldActive;
     private Rigidbody _rigidbody;
     
     void Start()

@@ -37,28 +37,29 @@ public class Pickaxe : MonoBehaviour
     {
 	    rotate = false;
 	    GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-	    if (hammerMode)
+	    if (collision.gameObject.CompareTag("Holdable") && !hammerMode)
 	    {
-		    TransformPickaxe();
-		    Swing(collision.collider.gameObject);
-		    button.ChangeIcon("Empty");
+		    PutStep();
 	    }
-	    if (collision.gameObject.CompareTag("Concrete"))
+	    else
 	    {
 		    transform.eulerAngles = new Vector3(0, 0, 0);
 		    GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-		    if (collision.gameObject.name != "Concrete")
+		    if (collision.gameObject.CompareTag("Concrete") && collision.gameObject.name != "Concrete")
 		    {
 			    button.GetComponent<Button>().interactable = true;
 			    ChangeCollectable(collision.collider.gameObject.name);
 			    Destroy(collision.transform.Find("Feature").gameObject);
 			    collision.gameObject.name = "Concrete";
 		    }
+		    if (hammerMode)
+		    {
+			    TransformPickaxe();
+			    Swing(collision.collider.gameObject);
+			    button.ChangeIcon("Empty");
+		    }
 	    }
-	    else if (collision.gameObject.CompareTag("Holdable") && !hammerMode)
-	    {
-		    PutStep();
-	    }
+	    
     }
     
 	private void ChangeCollectable(string collectableName)
