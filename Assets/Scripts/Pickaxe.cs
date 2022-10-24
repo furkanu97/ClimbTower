@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,19 +36,23 @@ public class Pickaxe : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 	    rotate = false;
+	    GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 	    if (hammerMode)
 	    {
 		    TransformPickaxe();
 		    Swing(collision.collider.gameObject);
+		    button.ChangeIcon("Empty");
 	    }
 	    if (collision.gameObject.CompareTag("Concrete"))
 	    {
 		    transform.eulerAngles = new Vector3(0, 0, 0);
+		    GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 		    if (collision.gameObject.name != "Concrete")
 		    {
-			    DestroyCollectable();
 			    button.GetComponent<Button>().interactable = true;
-			    AddCollectable(collision.collider.gameObject.name);
+			    ChangeCollectable(collision.collider.gameObject.name);
+			    Destroy(collision.transform.Find("Feature").gameObject);
+			    collision.gameObject.name = "Concrete";
 		    }
 	    }
 	    else if (collision.gameObject.CompareTag("Holdable") && !hammerMode)
@@ -56,7 +61,7 @@ public class Pickaxe : MonoBehaviour
 	    }
     }
     
-	private void AddCollectable(string collectableName)
+	private void ChangeCollectable(string collectableName)
 	{
 		character.collectable = collectableName switch
 		{
@@ -68,15 +73,6 @@ public class Pickaxe : MonoBehaviour
 			_ => character.collectable
 		};
 		button.ChangeIcon(collectableName);
-	}
-
-	private void DestroyCollectable()
-	{
-		if(character.GetComponent<CollectableBase>())
-		{
-			Destroy(character.GetComponent<CollectableBase>());
-			button.GetComponent<Button>().interactable = false;
-		}
 	}
     
     private void PutStep()
