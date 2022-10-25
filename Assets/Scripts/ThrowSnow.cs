@@ -27,7 +27,6 @@ public class ThrowSnow : CollectableBase
         snowball = Instantiate(snowball, pos, Quaternion.identity);
         _rotate = true;
         Invoke(nameof(Stop),0.5f);
-        //Check if hit
     }
 
     private void Stop()

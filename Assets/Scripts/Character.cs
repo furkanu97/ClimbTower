@@ -4,14 +4,16 @@ public class Character : MonoBehaviour
 {
     [SerializeField] public Pickaxe pickaxe;
     [SerializeField] public CollectableBase collectable;
-    public bool onAir;
-    public bool shieldActive;
+    [HideInInspector] public bool onAir;
+    [HideInInspector] public bool shieldActive;
+    [HideInInspector] public bool controllable;
     private Rigidbody _rigidbody;
     
     void Start()
     {
         onAir = false;
         _rigidbody = GetComponent<Rigidbody>();
+        controllable = true;
     }
 
     void Update()
@@ -31,6 +33,19 @@ public class Character : MonoBehaviour
         onAir = true;
     }
 
+    public void Fall(float fallingTime)
+    {
+        controllable = false;
+        transform.Rotate(Vector3.forward, 30f);
+        Invoke(nameof(TakeControl), fallingTime);
+    }
+
+    private void TakeControl()
+    {
+        controllable = true;
+        transform.rotation = Quaternion.identity;
+    }
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Step"))

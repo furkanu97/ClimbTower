@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 435865698824801497}
   - component: {fileID: 435865698824801496}
   - component: {fileID: 6783803945449385637}
+  - component: {fileID: 7243069417055824689}
   m_Layer: 3
   m_Name: Hammer
   m_TagString: Concrete
@@ -115,6 +116,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 1
+--- !u!114 &7243069417055824689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435865698824801479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d191c341677b5ba4c8be39423b5c7450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &815680807405926690
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,10 @@ public class Controller : MonoBehaviour
     
     private void Update()
     {
-        GetInput();
+        if (character.controllable)
+        {
+            GetInput();
+        }
     }
     
     private void GetInput()
@@ -37,7 +40,7 @@ public class Controller : MonoBehaviour
             else if (Input.GetMouseButtonUp(0))
             {
                 _pullRate = Input.mousePosition.y - _y;
-                _force = Vector3.down * forceFactor * _pullRate;
+                _force =  forceFactor * _pullRate * Vector3.down;
                 if(_pullRate < 0) character.Jump(_force);
             }
         }

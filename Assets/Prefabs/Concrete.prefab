@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3003082645066565230}
   - component: {fileID: 3003082645066565231}
   - component: {fileID: 8180084988633998354}
+  - component: {fileID: 98026806554636093}
   m_Layer: 0
   m_Name: Concrete
   m_TagString: Concrete
@@ -114,3 +115,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &98026806554636093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003082645066565232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d191c341677b5ba4c8be39423b5c7450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

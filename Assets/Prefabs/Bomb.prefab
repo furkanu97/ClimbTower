@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3636941079003661845}
   - component: {fileID: 3636941079003661844}
   - component: {fileID: 7661021609542001769}
+  - component: {fileID: -4773567602383054674}
   m_Layer: 3
   m_Name: Bomb
   m_TagString: Concrete
@@ -115,6 +116,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 1
+--- !u!114 &-4773567602383054674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636941079003661835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d191c341677b5ba4c8be39423b5c7450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4549869756873208814
 GameObject:
   m_ObjectHideFlags: 0
