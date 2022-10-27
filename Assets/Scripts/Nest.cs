@@ -3,22 +3,35 @@
 public class Nest : CollectableBase
 {
     [SerializeField] public GameObject character;
-    [SerializeField] public GameObject bird;
+    [SerializeField] public GameObject bot;
+    [SerializeField] public GameObject redBird;
+    [SerializeField] public GameObject blueBird;
     private Vector3 _pos;
     private GameObject[] _birds;
     private void Start()
     {
-        character = GameObject.Find("Character");
         _birds = new GameObject[4];
     }
 
-    private void ReleaseBirds()
+    private void ReleaseBirds(string who)
     {
-        _pos += character.transform.position;
-        for (var i = 0; i < 4; i++)
+        if (who == "Character")
         {
-            _birds[i] = Instantiate(bird, _pos + i * 0.1f *  Vector3.right, Quaternion.identity);
-            _birds[i].GetComponent<Rigidbody>().AddForce(1f,0.3f,i*0.3f);
+            _pos += character.transform.position;
+            for (var i = 0; i < 4; i++)
+            {
+                _birds[i] = Instantiate(redBird, _pos + i * 0.1f * Vector3.right, Quaternion.identity);
+                //flyTo
+            }
+        }
+        else
+        {
+            _pos += bot.transform.position;
+            for (var i = 0; i < 4; i++)
+            {
+                _birds[i] = Instantiate(blueBird, _pos - i * 0.1f * Vector3.right, Quaternion.identity);
+                //flyTo
+            }
         }
         foreach (var b in _birds)
         {
@@ -26,8 +39,8 @@ public class Nest : CollectableBase
         }
     }
     
-    public override void Use()
+    public override void Use(GameObject usedBy)
     {
-        ReleaseBirds();
+        ReleaseBirds(usedBy.name);
     }
 }

@@ -3,22 +3,18 @@ using UnityEngine;
 
 public class Hammer : CollectableBase
 {
-    [SerializeField] public GameObject pickAxe;
+    private Pickaxe _pickAxe;
 
-    private void Start()
+    private void TransformHammer(GameObject character)
     {
-        pickAxe = GameObject.Find("Pickaxe");
-    }
-
-    private void TransformHammer()
-    {
-        pickAxe.GetComponent<Pickaxe>().hammerMode = true;
-        pickAxe.transform.Find("Top").localScale = new Vector3(0.25f, 0.25f, 0.2f);
-        pickAxe.GetComponentInChildren<MeshRenderer>().material = pickAxe.GetComponent<Pickaxe>().hammerMaterial;
+        _pickAxe = character.GetComponent<Character>().pickaxe;
+        _pickAxe.hammerMode = true;
+        _pickAxe.gameObject.transform.Find("Top").localScale = new Vector3(0.25f, 0.25f, 0.2f);
+        _pickAxe.gameObject.GetComponentInChildren<MeshRenderer>().material = _pickAxe.hammerMaterial;
     }
     
-    public override void Use()
+    public override void Use(GameObject usedBy)
     {
-        TransformHammer();
+        TransformHammer(usedBy);
     }
 }

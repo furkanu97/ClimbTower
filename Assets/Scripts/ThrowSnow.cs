@@ -3,28 +3,24 @@ using UnityEngine;
 
 public class ThrowSnow : CollectableBase
 {
-    [SerializeField] public GameObject character;
     [SerializeField] public GameObject snowball;
     [SerializeField] public int rotationSpeed;
     private bool _rotate;
-
-    private void Start()
-    {
-        character = GameObject.Find("Character");
-    }
+    private Vector3 _rot;
 
     private void Update()
     {
         if (_rotate)
         {
-            snowball.transform.Rotate(rotationSpeed * 100 * Time.deltaTime * Vector3.down);
+            snowball.transform.Rotate(_rot);
         }
     }
 
-    private void ThrowSnowBall()
+    private void ThrowSnowBall(GameObject character)
     {
-        Vector3 pos = character.transform.position + Vector3.right;
-        snowball = Instantiate(snowball, pos, Quaternion.identity);
+        var pos = character.transform.position + Vector3.right;
+        snowball = Instantiate(snowball, pos, character.name == "Character" ? Quaternion.identity : new Quaternion(0,0.38f,0,0.92f));
+        _rot = rotationSpeed * 100 * Time.deltaTime * (character.name == "Character" ? Vector3.down : Vector3.up);
         _rotate = true;
         Invoke(nameof(Stop),0.5f);
     }
@@ -35,8 +31,8 @@ public class ThrowSnow : CollectableBase
         Destroy(snowball);
     }
     
-    public override void Use()
+    public override void Use(GameObject usedBy)
     {
-        ThrowSnowBall();
+        ThrowSnowBall(usedBy);
     }
 }

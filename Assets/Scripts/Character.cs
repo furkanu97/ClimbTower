@@ -8,12 +8,14 @@ public class Character : MonoBehaviour
     [HideInInspector] public bool shieldActive;
     [HideInInspector] public bool controllable;
     private Rigidbody _rigidbody;
+    private int _direct;
     
     void Start()
     {
         onAir = false;
         _rigidbody = GetComponent<Rigidbody>();
         controllable = true;
+        _direct = gameObject.name == "Character" ? 1 : -1;
     }
 
     void Update()
@@ -23,7 +25,7 @@ public class Character : MonoBehaviour
 
     private void CarryPickaxe()
     {
-        pickaxe.transform.position = transform.position + new Vector3(0.2f, 0, -0.3f);
+        pickaxe.transform.position = transform.position + _direct * new Vector3(0.2f, 0, -0.3f);
     }
 
     public void Jump(Vector3 force)

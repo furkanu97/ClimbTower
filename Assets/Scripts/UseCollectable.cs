@@ -21,7 +21,7 @@ public class UseCollectable : MonoBehaviour
         if (_character.GetComponent<Character>().collectable)
         {
             Debug.Log("Used: " + _character.GetComponent<Character>().collectable.name);
-            _character.GetComponent<Character>().collectable.Use();
+            _character.GetComponent<Character>().collectable.Use(_character);
             _character.GetComponent<Character>().collectable = null;
             ChangeIcon("Empty");
         }
