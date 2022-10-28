@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -38,7 +39,8 @@ public class Character : MonoBehaviour
     public void Fall(float fallingTime)
     {
         controllable = false;
-        transform.Rotate(Vector3.forward, 30f);
+        transform.Rotate(Vector3.forward, _direct * 30f);
+        pickaxe.transform.Rotate(Vector3.back, _direct * 30f);
         Invoke(nameof(TakeControl), fallingTime);
     }
 
@@ -46,6 +48,7 @@ public class Character : MonoBehaviour
     {
         controllable = true;
         transform.rotation = Quaternion.identity;
+        pickaxe.transform.rotation = Quaternion.identity;
     }
     
     private void OnCollisionEnter(Collision collision)

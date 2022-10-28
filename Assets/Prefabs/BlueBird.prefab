@@ -110,8 +110,8 @@ GameObject:
   - component: {fileID: 2650187719677484557}
   - component: {fileID: 780073955602674410}
   - component: {fileID: 3476768219873840314}
-  - component: {fileID: 7365972595589706563}
   - component: {fileID: 6782608985470298829}
+  - component: {fileID: 7609183651621996132}
   m_Layer: 0
   m_Name: BlueBird
   m_TagString: Untagged
@@ -199,18 +199,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7365972595589706563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202541722119027694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d191c341677b5ba4c8be39423b5c7450, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &6782608985470298829
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -227,3 +215,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7609183651621996132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202541722119027694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d073c8fa8bc2d74ea97a338a46873e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
