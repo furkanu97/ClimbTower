@@ -1,63 +1,46 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Net.Mime;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UseCollectable : MonoBehaviour
 {
-    [SerializeField] public Character character;
+    
     [SerializeField] public List<Sprite> sprites;
-    private Sprite _sprite;
-    private Transform _child;
+    private GameObject _character;
     private Image _image;
+    private Sprite _sprite;
+    
     private void Start()
     {
-        _child = transform.Find("Feature");
-        _image = _child.gameObject.GetComponent<Image>();
+        GetComponent<Button>().interactable = false;
     }
     public void UseOnClick()
     {
-        if (character.GetComponent<Hammer>())
+        _character = GameObject.Find("Character");
+        if (_character.GetComponent<Character>().collectable)
         {
-            character.GetComponent<Hammer>().Use();
-            _image.sprite = null;
-            _image.color = Color.red;
-        }
-        else if (character.GetComponent<Bomb>())
-        {
-            character.GetComponent<Bomb>().Use();
-            _image.sprite = null;
-            _image.color = Color.red;
-        }
-        else if (character.GetComponent<Nest>())
-        {
-            character.GetComponent<Nest>().Use();
-            _image.sprite = null;
-            _image.color = Color.red;
-        }
-        else if (character.GetComponent<ThrowSnow>())
-        {
-            character.GetComponent<ThrowSnow>().Use();
-            _image.sprite = null;
-            _image.color = Color.red;
-        }
-        else if (character.GetComponent<Shield>())
-        {
-            character.GetComponent<Shield>().Use();
-            _image.sprite = null;
-            _image.color = Color.red;
+            Debug.Log("Used: " + _character.GetComponent<Character>().collectable.name);
+            _character.GetComponent<Character>().collectable.Use(_character);
+            _character.GetComponent<Character>().collectable = null;
+            ChangeIcon("Empty");
         }
     }
-
-    public void ChangeIcon(CollectableList collectable)
+    
+    public void ChangeIcon(string collectableName)
     {
-        if (collectable != CollectableList.Empty)
+        _image = transform.Find("Feature").gameObject.GetComponent<Image>();
+        if (collectableName != "Empty")
         {
-            _sprite = sprites.Find(sp => sp.name == collectable.ToString());
-            Debug.Log("Name: " + _sprite.name);
+            _sprite = sprites.Find(sp => sp.name == collectableName);
             _image.sprite = _sprite;
             _image.color = Color.white;
+        }
+        else
+        {
+            _image.sprite = null;
+            _image.color = new Color(1,1,1,0);
+            GetComponent<Button>().interactable = false;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿public interface ICollectable
+﻿using UnityEngine;
+
+public interface ICollectable
 {
-    void Use();
+    void Use(GameObject usedBy);
 }

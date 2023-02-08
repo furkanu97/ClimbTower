@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7816588692560013190}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7816588692248379107
 MeshFilter:
@@ -114,7 +114,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7816588692560013190}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7816588692375221013
 MeshFilter:
@@ -197,8 +197,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7816588692248379104}
   - {fileID: 7816588692375221010}
+  - {fileID: 7816588692248379104}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,7 +245,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  button: {fileID: 0}
-  step: {fileID: 0}
+  button: {fileID: 1019688446547759758, guid: bb90bfded76428e4c9ad32bdb34407fa, type: 3}
+  stepChar: {fileID: 644993688374213251, guid: 9c0872f5c6e80074ebbe50badc1229de, type: 3}
+  stepAI: {fileID: 6595110204754827829, guid: 7e66283f4acf6ea478fcb3da69723240, type: 3}
+  hammerMaterial: {fileID: 2100000, guid: 6bbcfee9803746c47b70222231ab7727, type: 2}
+  pickaxeMaterial: {fileID: 2100000, guid: 822ada497e58d9646b34ba149cd93498, type: 2}
   rotate: 0
+  hammerMode: 0
   rotateSpeed: 2
