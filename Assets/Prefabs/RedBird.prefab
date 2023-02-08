@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7479730137068359892}
   - component: {fileID: 7479730137068359893}
   - component: {fileID: 7479730137068359894}
+  - component: {fileID: 7479730137068359850}
   - component: {fileID: 7479730137068359849}
-  - component: {fileID: 1486664342851516994}
+  - component: {fileID: 3621004259531733837}
   m_Layer: 0
   m_Name: RedBird
   m_TagString: Untagged
@@ -95,12 +96,24 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7479730137068359895}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7479730137068359850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7479730137068359895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d191c341677b5ba4c8be39423b5c7450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &7479730137068359849
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,7 +130,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1486664342851516994
+--- !u!114 &3621004259531733837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
