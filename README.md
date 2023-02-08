@@ -6,7 +6,7 @@ I have added data persistence to track down the process informations of the play
 
 Note: I have added a login screen which checks the BigQuery database using Google Functions and not letting the banned players in.
       It was a very simple system but I have changed it back since I could not be able to keep my database running all the time.
-      Codes for this login process can be reviewed as comments in Assets/Scripts/LoginScreen.cs file.
-      Also, codes for the server side of the login process can be reviewed in ClimbTower_Google_Cloud folder.
+      Code for this login process can be reviewed as comments in Assets/Scripts/LoginScreen.cs file.
+      Also, code for the server side of the login process can be reviewed in ClimbTower_Google_Cloud folder.
       
 Special thanks to no-pact.
