@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Fall : MonoBehaviour
@@ -10,7 +9,6 @@ public class Fall : MonoBehaviour
             var character = other.gameObject.GetComponent<Character>();
             if (!character.shieldActive)
             {
-                Debug.Log("Touched");
                 character.Fall(2f);
             }
         }

@@ -13,14 +13,10 @@ public class LoginScreen : MonoBehaviour
     public void SubmitOnClick()
     {
         //StartCoroutine(HandleSubmitRequest());
-        HandleSubmit();
-    }
-
-    private void HandleSubmit()
-    {
-        if (username.text != "Mark" | username.text != "MARK" | username.text != "mark" )
+        if (username.text != "Max" | username.text != "MAX" | username.text != "max")
         {
-            gameManagement.currentLevelName = "Level 01";
+            highScore = "Level 01";
+            gameManagement.currentLevelName = highScore;
             gameManagement.MainMenu();
         }
         else

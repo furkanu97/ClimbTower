@@ -1641,7 +1641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameHasEnded: 0
-  currentLevelName: 
   completeLevelUI: {fileID: 690708196}
   failLevelUI: {fileID: 899032585}
   gameScreenUI: {fileID: 442574368}
@@ -2381,10 +2380,6 @@ PrefabInstance:
     - target: {fileID: 6193400398676560769, guid: c82b00252bf594740994496745550558, type: 3}
       propertyPath: m_Name
       value: FinishLine Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 6193400398676560769, guid: c82b00252bf594740994496745550558, type: 3}
-      propertyPath: m_TagString
-      value: Finito
       objectReference: {fileID: 0}
     - target: {fileID: 6193400398676560797, guid: c82b00252bf594740994496745550558, type: 3}
       propertyPath: m_RootOrder

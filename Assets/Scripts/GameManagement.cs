@@ -1,9 +1,10 @@
-using System;
+/*using System;
 using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+*/
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour, IDataPersistence
 {

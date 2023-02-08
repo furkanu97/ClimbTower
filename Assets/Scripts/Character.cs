@@ -1,6 +1,4 @@
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class Character : MonoBehaviour
 {
@@ -64,7 +62,9 @@ public class Character : MonoBehaviour
     public void Jump(Vector3 force)
     {
         pickaxe.transform.eulerAngles = new Vector3(0, 0, 0);
+        Debug.Log("Forced: " + force);
         _rigidbody.AddForce(Vector3.Min(force,3000*Vector3.up));
+        Debug.Log("Jumped: " + Vector3.Min(force,3000*Vector3.up));
         onAir = true;
     }
 
