@@ -13,7 +13,8 @@ public class LoginScreen : MonoBehaviour
     public void SubmitOnClick()
     {
         //StartCoroutine(HandleSubmitRequest());
-        if (username.text != "Max" | username.text != "MAX" | username.text != "max")
+        var usr = username.text.Replace("\u200B", "");
+        if (usr != "Max" & usr != "MAX" & usr != "max")
         {
             highScore = "Level 01";
             gameManagement.currentLevelName = highScore;
@@ -22,7 +23,7 @@ public class LoginScreen : MonoBehaviour
         else
         {
             panel.SetActive(true);
-            Invoke(nameof(ClosePanel),2f);
+            Invoke(nameof(ClosePanel), 2f);
         }
     }
 
